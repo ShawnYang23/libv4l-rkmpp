@@ -18,15 +18,15 @@
 #include "libv4l-rkmpp.h"
 
 #ifndef V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BEFORE_IDR
-#define V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BEFORE_IDR	(V4L2_CID_MPEG_BASE+388)
+#define V4L2_CID_MPEG_VIDEO_H264_SPS_PPS_BEFORE_IDR (V4L2_CID_MPEG_BASE + 388)
 #endif
 
-#define MPP_H264_PROFILE_BASELINE	66
-#define MPP_H264_PROFILE_MAIN		77
-#define MPP_H264_PROFILE_HIGH		100
+#define MPP_H264_PROFILE_BASELINE 66
+#define MPP_H264_PROFILE_MAIN 77
+#define MPP_H264_PROFILE_HIGH 100
 
 /* The MPP is using 1K for header buf. */
-#define MAX_HEADER_BYTES	(1 << 10)
+#define MAX_HEADER_BYTES (1 << 10)
 
 /**
  * struct rkmpp_enc_context - Context private data for encoder
@@ -52,53 +52,53 @@
  * @vstride:		Video vstride.
  */
 struct rkmpp_enc_context {
-	struct rkmpp_context *ctx;
-	struct v4l2_rect crop;
+  struct rkmpp_context* ctx;
+  struct v4l2_rect crop;
 
-	struct {
-		int profile;
-		int level;
-		bool separate_header; /* V4L2_CID_MPEG_VIDEO_HEADER_MODE */
-	} h264;
+  struct {
+    int profile;
+    int level;
+    bool separate_header; /* V4L2_CID_MPEG_VIDEO_HEADER_MODE */
+  } h264;
 
-	struct {
-		bool is_ivf;
-	} vp8;
+  struct {
+    bool is_ivf;
+  } vp8;
 
-	enum {
-		H264,
-		VP8,
-	} type;
+  enum {
+    H264,
+    VP8,
+  } type;
 
-	int max_qp;
-	int min_qp;
+  int max_qp;
+  int min_qp;
 
-	bool needs_header;
-	MppPacket header;
-	MppEncHeaderMode header_mode;
+  bool needs_header;
+  MppPacket header;
+  MppEncHeaderMode header_mode;
 
-	MppEncRcMode rc_mode;
+  MppEncRcMode rc_mode;
 
-	bool mb_rc;
-	int rc_reaction_coeff;
-	int gop_size;
-	bool fixed_bitrate;
+  bool mb_rc;
+  int rc_reaction_coeff;
+  int gop_size;
+  bool fixed_bitrate;
 
-	int bitrate;
-	int denominator;
-	int numerator;
+  int bitrate;
+  int denominator;
+  int numerator;
 
-	int keyframe_requested;
+  int keyframe_requested;
 
-	int width;
-	int height;
-	int hstride;
-	int vstride;
+  int width;
+  int height;
+  int hstride;
+  int vstride;
 };
 
-bool rkmpp_enc_has_event(void *data);
-void *rkmpp_enc_init(struct rkmpp_context *ctx);
-int rkmpp_enc_ioctl(void *data, unsigned long cmd, void *arg);
-void rkmpp_enc_deinit(void *data);
+bool rkmpp_enc_has_event(void* data);
+void* rkmpp_enc_init(struct rkmpp_context* ctx);
+int rkmpp_enc_ioctl(void* data, unsigned long cmd, void* arg);
+void rkmpp_enc_deinit(void* data);
 
-#endif //LIBV4L_RKMPP_ENC_H
+#endif  // LIBV4L_RKMPP_ENC_H

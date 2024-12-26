@@ -18,15 +18,15 @@
 #include "libv4l-rkmpp.h"
 
 #ifndef V4L2_PIX_FMT_VP9
-#define V4L2_PIX_FMT_VP9	v4l2_fourcc('V', 'P', '9', '0') /* VP9 */
+#define V4L2_PIX_FMT_VP9 v4l2_fourcc('V', 'P', '9', '0') /* VP9 */
 #endif
 
 #ifndef V4L2_PIX_FMT_HEVC
-#define V4L2_PIX_FMT_HEVC	v4l2_fourcc('H', 'E', 'V', 'C') /* HEVC */
+#define V4L2_PIX_FMT_HEVC v4l2_fourcc('H', 'E', 'V', 'C') /* HEVC */
 #endif
 
 #ifndef V4L2_PIX_FMT_AV1
-#define V4L2_PIX_FMT_AV1	v4l2_fourcc('A', 'V', '0', '1') /* AV1 */
+#define V4L2_PIX_FMT_AV1 v4l2_fourcc('A', 'V', '0', '1') /* AV1 */
 #endif
 
 /**
@@ -42,17 +42,17 @@
  * @size:		Required video buffer size.
  */
 struct rkmpp_video_info {
-	bool valid;
-	bool dirty;
-	bool event;
+  bool valid;
+  bool dirty;
+  bool event;
 
-	MppFrameFormat mpp_format;
-	uint32_t width;
-	uint32_t height;
-	uint32_t hor_stride;
-	uint32_t ver_stride;
+  MppFrameFormat mpp_format;
+  uint32_t width;
+  uint32_t height;
+  uint32_t hor_stride;
+  uint32_t ver_stride;
 
-	uint32_t size;
+  uint32_t size;
 };
 
 /**
@@ -63,17 +63,17 @@ struct rkmpp_video_info {
  * @pending_eos:	Has pending EOS to return.
  */
 struct rkmpp_dec_context {
-	struct rkmpp_context *ctx;
-	struct rkmpp_video_info video_info;
+  struct rkmpp_context* ctx;
+  struct rkmpp_video_info video_info;
 
-	bool event_subscribed;
+  bool event_subscribed;
 
-	bool pending_eos;
+  bool pending_eos;
 };
 
-bool rkmpp_dec_has_event(void *data);
-void *rkmpp_dec_init(struct rkmpp_context *ctx);
-int rkmpp_dec_ioctl(void *data, unsigned long cmd, void *arg);
-void rkmpp_dec_deinit(void *data);
+bool rkmpp_dec_has_event(void* data);
+void* rkmpp_dec_init(struct rkmpp_context* ctx);
+int rkmpp_dec_ioctl(void* data, unsigned long cmd, void* arg);
+void rkmpp_dec_deinit(void* data);
 
-#endif //LIBV4L_RKMPP_DEC_H
+#endif  // LIBV4L_RKMPP_DEC_H
